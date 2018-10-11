@@ -3,12 +3,36 @@ const dataKeys = require("./keys.js");
 const fs = require('fs');
 const Spotify = require('node-spotify-api');
 const request = require('request');
-let inquirer = require('inquirer');
+const inquirer = require('inquirer');
 
 
-function spotifyThis() {
-  console.log("sorry doesn't work yet")
+let spotifyThis = function (songChoice) {
   let spotify = new Spotify(dataKeys.spotify);
+
+  spotify.search({
+    type: 'track',
+    query: songChoice
+  }, function (err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+    const getArtist = function (artist) {
+      return artist.name;
+      };
+
+    const response = data.tracks.items;
+  
+    for (var i = 0; i < response.length; i++) {
+      console.log(
+      `==========
+      ${i}
+      Artist(s): ${response[i].artists.map(getArtist)}
+      Song: ${response[i].name}
+      Preview URL: ${response[i].preview_url}
+      Album: ${response[i].album.name}
+      ==========`);
+    }
+  });
 
 }
 
@@ -33,8 +57,7 @@ let movieThis = function (movieName) {
       Country of Production: ${JSON.parse(body).Country}
       Language of Movie: ${JSON.parse(body).Language}
       Plot of Movie: ${JSON.parse(body).Plot}
-      Actors: ${JSON.parse(body).Actors}
-      ==========`)
+      Actors: ${JSON.parse(body).Actors}`)
     }
   });
 }
@@ -62,7 +85,7 @@ let questions = [{
   {
     type: 'input',
     name: 'songChoice',
-    message: 'What\'s the name of the song you would like?',
+    message: 'What song would you like to search for?',
     when: function (answers) {
       return answers.choices == 'Spotify';
     }
@@ -81,7 +104,7 @@ inquirer
       case 'Movie':
         movieThis(answers.movieChoice);
         break;
-      case 'do-what-it-says':
+      case 'Do What It Says':
         doWhatItSays();
         break;
       default:
