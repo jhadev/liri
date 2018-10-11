@@ -25,7 +25,8 @@ let movieThis = function (movieName) {
 
     if (!error && response.statusCode === 200) {
       // console.log(JSON.parse(body, null, 2));
-      console.log(`==========
+      console.log(
+      `==========
       Title: ${JSON.parse(body).Title}
       Year: ${JSON.parse(body).Year}
       IMDB Rating: ${JSON.parse(body).imdbRating}
