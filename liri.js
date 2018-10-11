@@ -55,9 +55,9 @@ let movieThis = function (movieName) {
       Title: ${JSON.parse(body).Title}
       Year: ${JSON.parse(body).Year}
       IMDB Rating: ${JSON.parse(body).imdbRating}
-      Country of Production: ${JSON.parse(body).Country}
-      Language of Movie: ${JSON.parse(body).Language}
-      Plot of Movie: ${JSON.parse(body).Plot}
+      Country: ${JSON.parse(body).Country}
+      Language: ${JSON.parse(body).Language}
+      Plot: ${JSON.parse(body).Plot}
       Actors: ${JSON.parse(body).Actors}`)
     }
   });
