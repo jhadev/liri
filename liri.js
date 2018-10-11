@@ -74,7 +74,7 @@ let bandsInTown = function (artist) {
 }
 
 
-function doWhatItSays() {
+let doWhatItSays = function() {
   fs.readFile("random.txt", "utf8", function (data) {
     spotifyThis(data);
   });

@@ -3,6 +3,14 @@
 ### A Node.js CLI app using multiple APIs
 ----
 
+### requires
+[node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
+
+[inquirer](https://www.npmjs.com/package/inquirer)
+
+[request](https://www.npmjs.com/package/request)
+
+[dotenv](https://www.npmjs.com/package/dotenv)
 
 
 * **OMDB API**
