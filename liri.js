@@ -84,7 +84,7 @@ let questions = [{
     type: 'list',
     name: 'choices',
     message: 'Pick a choice, any choice',
-    choices: ['Spotify', 'Movie', 'Bands In Town']
+    choices: ['Spotify', 'Movie', 'Bands In Town', 'Do What It Says']
   },
   {
     type: 'input',
