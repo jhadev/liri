@@ -6,10 +6,16 @@ const request = require('request');
 const inquirer = require('inquirer');
 const moment = require('moment');
 
+const divider = `======================================`
+
 //spotify function
 
 let spotifyThis = function (songChoice) {
   let spotify = new Spotify(dataKeys.spotify);
+
+  if (!songChoice) {
+    songChoice = "Truckin";
+  }
 
   spotify.search({
     type: 'track',
@@ -26,13 +32,12 @@ let spotifyThis = function (songChoice) {
   
     for (var i = 0; i < response.length; i++) {
       console.log(
-      `==========
-      ${i}
+      `${i}
       Artist(s): ${response[i].artists.map(getArtist)}
       Song: ${response[i].name}
       Preview URL: ${response[i].preview_url}
       Album: ${response[i].album.name}
-      ==========`);
+      ${divider}`);
     }
   });
 
@@ -52,14 +57,15 @@ let movieThis = function (movieName) {
     if (!error && response.statusCode === 200) {
       
       console.log(
-      `==========
+      `
       Title: ${JSON.parse(body).Title}
       Year: ${JSON.parse(body).Year}
       IMDB Rating: ${JSON.parse(body).imdbRating}
       Country: ${JSON.parse(body).Country}
       Language: ${JSON.parse(body).Language}
       Plot: ${JSON.parse(body).Plot}
-      Actors: ${JSON.parse(body).Actors}`)
+      Actors: ${JSON.parse(body).Actors}
+      ${divider}`)
     }
   });
 }
@@ -82,7 +88,8 @@ let bandsInTown = function (bandChoice) {
         console.log(`
   Venue: ${result.venue.name}
   Location: ${result.venue.city}, ${result.venue.region}, ${result.venue.country}
-  Date: ${moment(result.datetime, "YYYY-MM-DDTHH:mm:ss").format("MM/DD/YYYY")}`)
+  Date: ${moment(result.datetime, "YYYY-MM-DDTHH:mm:ss").format("MM/DD/YYYY")}
+  ${divider}`)
       })
 
       
