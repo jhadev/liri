@@ -10,7 +10,7 @@ const divider = `======================================`
 
 //spotify function
 
-let spotifyThis = function (songChoice) {
+let spotifyThis = (songChoice) => {
   let spotify = new Spotify(dataKeys.spotify);
 
   if (!songChoice) {
@@ -43,7 +43,7 @@ let spotifyThis = function (songChoice) {
 
 }
 
-let movieThis = function (movieName) {
+let movieThis = (movieName) => {
 
 
   if (!movieName) {
@@ -70,10 +70,10 @@ let movieThis = function (movieName) {
   });
 }
 
-let bandsInTown = function (bandChoice) {
+let bandsInTown = (artistChoice) => {
 
 
-  const artistUrl = "https://rest.bandsintown.com/artists/" + bandChoice + "/events?app_id=codingbootcamp";
+  const artistUrl = "https://rest.bandsintown.com/artists/" + artistChoice + "/events?app_id=codingbootcamp";
   
   request(artistUrl, function (error, response, body) {
     if (!error && response.statusCode === 200) {
@@ -98,7 +98,7 @@ let bandsInTown = function (bandChoice) {
 }
 
 
-let doWhatItSays = function() {
+let doWhatItSays = () => {
   fs.readFile("random.txt", "utf8", function (data) {
     spotifyThis(data);
   });
@@ -128,7 +128,7 @@ let questions = [{
   },
   {
     type: 'input',
-    name: 'bandChoice',
+    name: 'artistChoice',
     message: 'What artist would you like to search for?',
     when: function (answers) {
       return answers.choices == 'Bands In Town';
@@ -149,13 +149,10 @@ inquirer
         movieThis(answers.movieChoice);
         break;
       case 'Bands In Town':
-        bandsInTown(answers.bandChoice);
+        bandsInTown(answers.artistChoice);
         break;
       case 'Do What It Says':
         doWhatItSays();
         break;
-      default:
-        console.log("Liri is confused");
-
     }
   });
