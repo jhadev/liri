@@ -4,6 +4,7 @@ const fs = require('fs');
 const Spotify = require('node-spotify-api');
 const request = require('request');
 const inquirer = require('inquirer');
+const moment = require('moment');
 
 //spotify function
 
@@ -63,14 +64,29 @@ let movieThis = function (movieName) {
   });
 }
 
-let bandsInTown = function (artist) {
+let bandsInTown = function (bandChoice) {
 
 
-  const artistUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
-  console.log("this doesn't work")
- // request(artistUrl, function (error, response, body) {
+  const artistUrl = "https://rest.bandsintown.com/artists/" + bandChoice + "/events?app_id=codingbootcamp";
+  request(artistUrl, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      const results = JSON.parse(body);
 
-  //});
+      if (!results[0]) {
+        console.log(`No results found`)
+        return false;
+      }
+     
+      results.forEach(function (result) {
+        console.log(`
+  Venue: ${result.venue.name}
+  Location: ${result.venue.city}, ${result.venue.region}, ${result.venue.country}
+  Date: ${moment(result.datetime, "YYYY-MM-DDTHH:mm:ss").format("MM/DD/YYYY")}`)
+      })
+
+      
+    }
+  });
 }
 
 
