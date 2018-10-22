@@ -12,6 +12,8 @@
 
 [dotenv](https://www.npmjs.com/package/dotenv)
 
+[moment](https://www.npmjs.com/package/moment)
+
 
 * **OMDB API**
 ![uh oh](https://github.com/jhadev/liri-hw/raw/master/images/movieThis.PNG)
@@ -19,4 +21,6 @@
 ![uh oh](https://github.com/jhadev/liri-hw/raw/master/images/spotifyThis.PNG)
 
 * **Bands In Town API**
-  under construction
+
+![uh oh](https://github.com/jhadev/liri-hw/raw/master/images/bandThis.PNG)
+  

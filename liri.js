@@ -68,6 +68,7 @@ let bandsInTown = function (bandChoice) {
 
 
   const artistUrl = "https://rest.bandsintown.com/artists/" + bandChoice + "/events?app_id=codingbootcamp";
+  
   request(artistUrl, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       const results = JSON.parse(body);
