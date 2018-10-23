@@ -8,6 +8,7 @@ const moment = require('moment');
 
 const divider = `======================================`
 
+//inquirer questions array
 
 const questions = [{
     type: 'list',
@@ -41,11 +42,11 @@ const questions = [{
   },
 
 ];
-
+//reference array in prompt
 inquirer
   .prompt(questions)
   .then(answers => {
-
+    //use switch case to choose which functions to run
     switch (answers.choices) {
       case 'Spotify':
         spotifyThis(answers.songChoice);
@@ -61,10 +62,11 @@ inquirer
         break;
     };
   });
-
+  //spotify function
   const spotifyThis = (songChoice) => {
+  //reference keys
     let spotify = new Spotify(dataKeys.spotify);
-  
+  //if there is no song input then default to Truckin
     if (!songChoice) {
       songChoice = "Truckin";
     }
@@ -82,15 +84,15 @@ inquirer
   
       const response = data.tracks.items;
     
-      for (var i = 0; i < response.length; i++) {
+        response.forEach(function(response) {
         console.log(
-        `${i}
-        Artist(s): ${response[i].artists.map(getArtist)}
-        Song: ${response[i].name}
-        Preview URL: ${response[i].preview_url}
-        Album: ${response[i].album.name}
+        `
+        Artist(s): ${response.artists.map(getArtist)}
+        Song: ${response.name}
+        Preview URL: ${response.preview_url}
+        Album: ${response.album.name}
         ${divider}`);
-      }
+      })
     });
   
   }
