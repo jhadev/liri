@@ -123,8 +123,11 @@ inquirer
   }
   
   const bandsInTown = (artistChoice) => {
-  
-  
+
+    if (!artistChoice) {
+      artistChoice = "Weezer";
+    }
+
     const artistUrl = "https://rest.bandsintown.com/artists/" + artistChoice + "/events?app_id=codingbootcamp";
     
     request(artistUrl, function (error, response, body) {
