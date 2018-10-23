@@ -24,3 +24,7 @@
 
 ![uh oh](https://github.com/jhadev/liri-hw/raw/master/images/bandThis.PNG)
   
+* **Do What It Says**
+#### Reads random.txt for song to search Spotify for. 
+![uh oh](https://github.com/jhadev/liri-hw/raw/master/images/doWhatItSays.PNG)
+  

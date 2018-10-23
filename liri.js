@@ -150,7 +150,7 @@ inquirer
   }
   
   const doWhatItSays = () => {
-    fs.readFile("random.txt", "utf8", function (data) {
-      spotifyThis(data);
+    fs.readFile("random.txt", "utf8", function (data, songChoice) {
+      spotifyThis(songChoice);
     });
   }
