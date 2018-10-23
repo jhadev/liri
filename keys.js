@@ -1,4 +1,4 @@
-console.log('I am a sentiet being');
+console.log('I am a sentient being');
 
 exports.spotify = {
   id: process.env.SPOTIFY_ID,
