@@ -59,7 +59,7 @@ inquirer
       case 'Do What It Says':
         doWhatItSays();
         break;
-    }
+    };
   });
 
   const spotifyThis = (songChoice) => {
